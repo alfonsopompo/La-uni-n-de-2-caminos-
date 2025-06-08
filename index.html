@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Invitación de Boda</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Raleway&display=swap');
+
+    body {
+      margin: 0;
+      padding: 2em;
+      font-family: 'Raleway', sans-serif;
+      color: #444;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      /* Fondo de playa */
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+      background-size: cover;
+      /* Capa suave para mejorar legibilidad */
+      position: relative;
+    }
+
+    /* Capa overlay para oscurecer un poco el fondo */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(255, 255, 255, 0.75);
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 12px;
+      padding: 2.5em 3em;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      animation: fadeInText 2s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeInText {
+      to {opacity: 1;}
+    }
+
+    .anillos {
+      position: relative;
+      font-size: 4em;
+      margin-bottom: 1em;
+      color: #b3759a;
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Anillos entrelazados con efecto */
+    .anillos::before, .anillos::after {
+      content: "💍";
+      position: absolute;
+      top: 0;
+      font-size: 4em;
+      color: #cfa6c4;
+      opacity: 0.9;
+      transform-origin: center;
+      transition: all 0.3s ease;
+    }
+    .anillos::before {
+      left: -0.7em;
+      transform: rotate(-20deg);
+      z-index: 1;
+    }
+    .anillos::after {
+      left: 0.7em;
+      transform: rotate(20deg);
+      z-index: 0;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      color: #9b4f72;
+      font-size: 2.8em;
+      margin: 0.2em 0 0.5em 0;
+      letter-spacing: 1px;
+    }
+
+    .subtitulo {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      font-size: 1.5em;
+      margin-bottom: 1.5em;
+      color: #8a4660;
+      letter-spacing: 0.8px;
+    }
+
+    .historia {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.15em;
+      line-height: 1.6em;
+      max-width: 600px;
+      margin: 0 auto 2em auto;
+      color: #4a4a4a;
+    }
+
+    .historia em {
+      color: #777;
+      font-style: italic;
+      margin-top: 1.5em;
+      display: block;
+    }
+
+    #cuenta-regresiva {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.7em;
+      color: #9b4f72;
+      margin-bottom: 2em;
+      letter-spacing: 1.2px;
+    }
+
+    .ubicacion {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.15em;
+      font-style: normal;
+      margin-top: 0.7em;
+      color: #6b4a5b;
+      letter-spacing: 0.6px;
+    }
+
+    .ubicacion a {
+      color: #b37295;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .ubicacion a:hover {
+      color: #7a3651;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="anillos" aria-label="Anillos entrelazados">💍</div>
+    <h1>Estás invitado a nuestra boda</h1>
+    <div class="subtitulo">Alfonso Cataldo &amp; Karin Legue</div>
+
+    <div class="historia">
+      Después de casi tres años de noviazgo y una década de conocernos,<br>
+      nuestras vidas se han entrelazado como dos caminos que siempre supieron encontrarse.<br><br>
+
+      Hemos compartido risas, aprendizajes, desafíos y sueños,<br>
+      y hoy damos un paso más:<br>
+      decidimos unir nuestras almas y corazones para siempre.<br><br>
+
+      Con gratitud en el corazón y alegría en el alma,<br>
+      te invitamos a ser testigo de este momento sagrado y lleno de amor.<br><br>
+
+      Tu presencia será el regalo más hermoso para nosotros en este nuevo comienzo.<br><br>
+
+      <em>“Por tanto, dejará el hombre a su padre y a su madre, y se unirá a su mujer,<br>
+      y serán una sola carne.” (Génesis 2:24)</em>
+    </div>
+
+    <div id="cuenta-regresiva" aria-live="polite" aria-atomic="true">Cargando cuenta regresiva...</div>
+
+    <div class="ubicacion" role="contentinfo">
+      📍 <a href="https://maps.app.goo.gl/HytPkc6jPrknAXCHA" target="_blank" rel="noopener noreferrer">
+        Sede Vecinal Los Naranjos, San Javier, Región del Maule
+      </a><br>
+      📅 15 de enero de 2026, 10:00 AM
+    </div>
+  </div>
+
+  <script>
+    const cuenta = document.getElementById("cuenta-regresiva");
+    const fechaBoda = new Date("2026-01-15T10:00:00");
+
+    function actualizarCuenta() {
+      const ahora = new Date();
+      const diferencia = fechaBoda - ahora;
+
+      if (diferencia <= 0) {
+        cuenta.textContent = "¡Ya comenzó la ceremonia!";
+        return;
+      }
+
+      const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+      const minutos = Math.floor((diferencia / (1000 * 60)) % 60);
+      const segundos = Math.floor((diferencia / 1000) % 60);
+
+      cuenta.textContent = `${dias} días, ${horas}h ${minutos}m ${segundos}s`;
+    }
+
+    setInterval(actualizarCuenta, 1000);
+    actualizarCuenta();
+  </script>
+</body>
+</html>
